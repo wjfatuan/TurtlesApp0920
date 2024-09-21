@@ -2,9 +2,14 @@
     <string name="app_name">TurtlesApp0920</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
+    <string name="title_detail">Character Detail</string>
     <string name="title_notifications">Notifications</string>
     <string-array name="character_names">
         <item>Donatello</item>
         <item>Leonardo</item>
+        <item>Michelangelo</item>
+        <item>Raphael</item>
+        <item>Splinter</item>
+        <item>April</item>
     </string-array>
 </resources>

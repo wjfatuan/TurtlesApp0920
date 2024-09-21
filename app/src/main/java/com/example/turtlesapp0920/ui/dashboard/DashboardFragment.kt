@@ -27,8 +27,10 @@ class DashboardFragment : Fragment() {
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        binding.tvTurtleName.text = arguments?.getString("turtle_name") ?: "donatello"
+        val turtleName = arguments?.getString("turtle_name") ?: "donatello"
+        binding.tvTurtleName.text = turtleName
+        val id = resources.getIdentifier(turtleName.lowercase(), "drawable", context?.packageName)
+        binding.ivTurtleImage.setImageResource(id)
 
         return root
     }
