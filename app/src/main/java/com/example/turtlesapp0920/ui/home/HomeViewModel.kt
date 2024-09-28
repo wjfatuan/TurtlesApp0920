@@ -6,8 +6,19 @@ import androidx.lifecycle.ViewModel
 
 class HomeViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    val characterNames = arrayListOf("donatello")
+    val allCharacterNames = arrayListOf("donatello", "leonardo", "michelangelo", "raphael", "splinter", "april")
+
+    fun addRandomCharacter() {
+        characterNames.add(allCharacterNames.random())
     }
-    val text: LiveData<String> = _text
+
+    fun addCharacter(name: String) {
+        characterNames.add(name)
+    }
+
+    fun removeCharacter(name: String) {
+        characterNames.remove(name)
+    }
+
 }

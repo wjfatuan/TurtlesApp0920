@@ -26,10 +26,12 @@ class DashboardFragment : Fragment() {
             ViewModelProvider(this).get(DashboardViewModel::class.java)
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        binding.model = dashboardViewModel
         val root: View = binding.root
         val turtleName = arguments?.getString("turtle_name") ?: "donatello"
-        binding.tvTurtleName.text = turtleName
-        val id = resources.getIdentifier(turtleName.lowercase(), "drawable", context?.packageName)
+        dashboardViewModel.changeCharacterName(turtleName)
+
+        val id = resources.getIdentifier(dashboardViewModel.characterName, "drawable", context?.packageName)
         binding.ivTurtleImage.setImageResource(id)
 
         return root
