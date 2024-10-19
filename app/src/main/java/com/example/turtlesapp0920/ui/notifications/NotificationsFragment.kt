@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.turtlesapp0920.databinding.FragmentNotificationsBinding
+import com.squareup.picasso.Picasso
 
 class NotificationsFragment : Fragment() {
 
@@ -28,9 +29,14 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        notificationsViewModel.loadCats()
+
         val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
+        notificationsViewModel.cat.observe(viewLifecycleOwner) {
             textView.text = it
+            Picasso.get()
+                .load(it)
+                .into(binding.catImage)
         }
         return root
     }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.turtlesapp0920.databinding.FragmentDashboardBinding
@@ -27,12 +28,15 @@ class DashboardFragment : Fragment() {
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         binding.model = dashboardViewModel
+        binding.lifecycleOwner = this
         val root: View = binding.root
         val turtleName = arguments?.getString("turtle_name") ?: "donatello"
         dashboardViewModel.changeCharacterName(turtleName)
-
-        val id = resources.getIdentifier(dashboardViewModel.characterName, "drawable", context?.packageName)
-        binding.ivTurtleImage.setImageResource(id)
+        dashboardViewModel.characterName.observe(viewLifecycleOwner) { it ->
+            Toast.makeText(requireActivity(), it, Toast.LENGTH_LONG).show()
+            val id = resources.getIdentifier(dashboardViewModel.characterName.value, "drawable", context?.packageName)
+            binding.ivTurtleImage.setImageResource(id)
+        }
 
         return root
     }
