@@ -37,6 +37,7 @@ class NotificationsFragment : Fragment() {
             Picasso.get()
                 .load(it)
                 .into(binding.catImage)
+            notificationsViewModel.addCharacter(it)
         }
         return root
     }
